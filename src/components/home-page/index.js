@@ -1,7 +1,7 @@
-import React, {PropTypes, Component} from 'react';
-import {connect} from 'react-redux';
+import React, { PropTypes, Component } from 'react';
+import { connect }                     from 'react-redux';
 
-import * as appActions from '../../actions/app-actions';
+import { actions as appActions } from '../../redux/app';
 
 let yeomanImage = require('../../images/yeoman.png');
 
@@ -20,6 +20,7 @@ class HomePage extends Component {
             <div>
                 <img src={yeomanImage} alt="Yeoman Generator"/>
                 <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+                <h1> {this.props.test} 1</h1>
             </div>
         );
     }
