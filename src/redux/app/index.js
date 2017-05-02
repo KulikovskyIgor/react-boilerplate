@@ -1,6 +1,6 @@
-import constantsHelper from '../helpers/constants-helper';
-import actionsHelper   from '../helpers/actions-helper';
-import reducerHelper   from '../helpers/reducer-helper';
+import constantsHelper from '../../utils/redux/constants-helper';
+import actionsHelper   from '../../utils/redux/actions-helper';
+import reducerHelper   from '../../utils/redux/reducer-helper';
 
 export const constants = constantsHelper('app', [
     'SET_TEST',

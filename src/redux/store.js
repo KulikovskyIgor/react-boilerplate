@@ -30,7 +30,7 @@ export default () => {
      * In order to load smth from localStore add code below to the createStoreWithMiddleware as second argument
      * load({namespace: 'project', states: ['app', '404page']})
      */
-    const store = createStoreWithMiddleware(reducers);
+    const store = createStoreWithMiddleware(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
     if (module.hot) {
         module.hot.accept('./reducers', () => {

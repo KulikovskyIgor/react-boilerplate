@@ -5,9 +5,6 @@ let webpack = require('webpack');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
-// Add needed plugins here
-let BowerWebpackPlugin = require('bower-webpack-plugin');
-
 let config = Object.assign({}, baseConfig, {
     entry   : {
         app: [
@@ -22,7 +19,9 @@ let config = Object.assign({}, baseConfig, {
             'react-redux',
             'react-router',
             'lodash',
-            'classnames'
+            'classnames',
+            'babel-polyfill',
+            'whatwg-fetch',
         ]
     },
     output: {
@@ -43,17 +42,9 @@ let config = Object.assign({}, baseConfig, {
           filename : 'vendors.js',
           minChunks: Infinity
       }),
-      new BowerWebpackPlugin({
-          searchResolveModulesDirectories: false
-      }),
       new webpack.DefinePlugin({
           'process.env.NODE_ENV': '"development"'
       }),
-      new webpack.ProvidePlugin({
-          'Promise': 'es6-promise',
-          'fetch': 'imports?this=>global!exports?global.fetch!whatwg-fetch',
-          '_': 'lodash'
-      })
   ],
   module: defaultSettings.getDefaultModules()
 });

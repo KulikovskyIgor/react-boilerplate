@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect }                     from 'react-redux';
 
 import { actions as appActions } from '../../redux/app';
+import { send as sendSameRequest } from '../../redux/home/sameAPIRequest';
 
 let yeomanImage = require('../../images/yeoman.png');
 
@@ -9,6 +10,8 @@ class HomePage extends Component {
 
     componentWillMount() {
         this.props.SET_TEST('demo text');
+
+        this.props.sendSameRequest();
     }
 
     componentWillUnmount() {
@@ -29,16 +32,19 @@ class HomePage extends Component {
 HomePage.propTypes = {
     test: PropTypes.any,
     SET_TEST: PropTypes.func.isRequired,
-    CLEAR: PropTypes.func.isRequired
+    CLEAR: PropTypes.func.isRequired,
+    sendSameRequest: PropTypes.func.isRequired,
 };
 
 const mapStateToPros = state => ({
-    test: state.app.test
+    test: state.app.test,
+    sameAPIReducer : state.home.sameAPIReducer,
 });
 
 const mapDispatchToProps = dispatch => ({
     SET_TEST: data => dispatch(appActions.SET_TEST(data)),
-    CLEAR: () => dispatch(appActions.CLEAR())
+    CLEAR: () => dispatch(appActions.CLEAR()),
+    sendSameRequest: () => dispatch(sendSameRequest()),
 });
 
 export default connect(mapStateToPros, mapDispatchToProps)(HomePage);
