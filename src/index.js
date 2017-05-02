@@ -13,6 +13,9 @@ import configureStore                              from './redux/store';
 const store = configureStore();
 const history = syncHistoryWithStore(browserHistory, store);
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
+
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>

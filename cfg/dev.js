@@ -2,6 +2,7 @@
 
 let path = require('path');
 let webpack = require('webpack');
+let OfflinePlugin = require('offline-plugin');
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
@@ -45,6 +46,7 @@ let config = Object.assign({}, baseConfig, {
       new webpack.DefinePlugin({
           'process.env.NODE_ENV': '"development"'
       }),
+      new OfflinePlugin(),
   ],
   module: defaultSettings.getDefaultModules()
 });
