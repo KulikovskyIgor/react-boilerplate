@@ -4,7 +4,10 @@ export default function (constantsObject) {
     let actionsObject = {};
 
     Object.keys(constantsObject).forEach(key => {
-        actionsObject[key] = createAction(constantsObject[key]);
+        Object.defineProperty(actionsObject, key, {
+            value: createAction(constantsObject[key]),
+            enumerable: true,
+        });
     });
 
     return actionsObject;

@@ -2,7 +2,10 @@ export default function (module, constants) {
     let constantsObject = {};
 
     constants.forEach(constant => {
-        constantsObject[constant] = `${module}/${constant}`;
+        Object.defineProperty(constantsObject, constant, {
+            value: `${module}/${constant}`,
+            enumerable: true,
+        });
     });
 
     return constantsObject;
