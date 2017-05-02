@@ -23,7 +23,10 @@ class HomePage extends Component {
             <div>
                 <img src={yeomanImage} alt="Yeoman Generator"/>
                 <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
-                <h1> {this.props.test} 1</h1>
+                <h1> {this.props.test} </h1>
+                <If condition={ true }>
+                    <span>IfBlock</span>
+                </If>
             </div>
         );
     }
